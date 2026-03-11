@@ -13,15 +13,32 @@ align-items:center;
 justify-content:center;
 height:100vh;
 margin:0;
+flex-direction:column;
 }
 
 .logo{
 width:800px;
 max-width:80%;
-
 filter:
 drop-shadow(10px 15px 30px rgba(0,0,0,0.08))
 drop-shadow(-3px -3px 6px rgba(255,255,255,0.95));
+}
+
+.menu{
+margin-top:40px;
+font-family:Helvetica, Arial, sans-serif;
+letter-spacing:4px;
+font-size:12px;
+}
+
+.menu a{
+text-decoration:none;
+color:#111;
+margin:0 20px;
+}
+
+.menu a:hover{
+opacity:0.4;
 }
 
 </style>
@@ -30,6 +47,12 @@ drop-shadow(-3px -3px 6px rgba(255,255,255,0.95));
 <body>
 
 <img src="dynammike_logo.png" class="logo">
+
+<div class="menu">
+<a href="#">listen</a>
+<a href="#">occasions</a>
+<a href="#">contact</a>
+</div>
 
 </body>
 </html>
