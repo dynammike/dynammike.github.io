@@ -56,31 +56,33 @@ body::before{
 /* LOGO */
 
 .logo{
-  width:min(1000px,80vw);
-  height:auto;
-  opacity:0;
+width:min(1000px,80vw);
+height:auto;
+opacity:0;
 
-  animation:
-    logoFade 3s cubic-bezier(.22,.61,.36,1) forwards,
-    logoBreath 12s ease-in-out infinite;
+animation:
+logoFade 3s cubic-bezier(.22,.61,.36,1) forwards,
+logoBreath 12s ease-in-out infinite;
 
-  /* EMBOSS / KANTENBETONUNG */
+filter:
+grayscale(1)
+brightness(1.05)
+contrast(1.35)
 
-  filter:
-    grayscale(1)
-    brightness(1.04)
-    contrast(1.22)
+/* highlight */
 
-    /* helle obere linke Kante */
-    drop-shadow(-1px -1px 0 rgba(255,255,255,1))
-    drop-shadow(-2px -2px 0 rgba(255,255,255,0.95))
-    drop-shadow(-3px -3px 2px rgba(255,255,255,0.65))
+drop-shadow(-1px -1px 0 rgba(255,255,255,1))
+drop-shadow(-2px -2px 0 rgba(255,255,255,0.95))
+drop-shadow(-3px -3px 3px rgba(255,255,255,0.7))
+drop-shadow(-4px -4px 6px rgba(255,255,255,0.5))
 
-    /* dunkle untere rechte Kante */
-    drop-shadow(1px 1px 0 rgba(0,0,0,0.22))
-    drop-shadow(2px 2px 0 rgba(0,0,0,0.20))
-    drop-shadow(3px 3px 2px rgba(0,0,0,0.22))
-    drop-shadow(4px 4px 4px rgba(0,0,0,0.16));
+/* shadow */
+
+drop-shadow(1px 1px 0 rgba(0,0,0,0.55))
+drop-shadow(2px 2px 0 rgba(0,0,0,0.45))
+drop-shadow(3px 3px 3px rgba(0,0,0,0.40))
+drop-shadow(5px 5px 8px rgba(0,0,0,0.30))
+drop-shadow(7px 7px 12px rgba(0,0,0,0.25));
 }
 
 /* Fade-In */
