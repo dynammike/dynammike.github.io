@@ -19,7 +19,7 @@ min-height:100%;
 }
 
 body{
-background:#efefec;
+background:#f5f5f2;
 font-family:Arial, Helvetica, sans-serif;
 display:flex;
 align-items:center;
@@ -28,37 +28,26 @@ min-height:100vh;
 color:#111;
 }
 
-.wrap{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:40px;
-}
-
-/* LOGO */
-
 .logo{
 width:min(1000px,80vw);
 height:auto;
 
 opacity:0;
 
-/* Fade Animation */
 animation:
 logoFade 3s cubic-bezier(.22,.61,.36,1) forwards,
 logoBreath 12s ease-in-out infinite;
 
-/* subtle emboss */
-
 filter:
 grayscale(1)
 brightness(1.05)
-contrast(1.08)
-drop-shadow(0 16px 30px rgba(0,0,0,0.12))
-drop-shadow(0 4px 10px rgba(0,0,0,0.08))
-drop-shadow(-2px -2px 3px rgba(255,255,255,0.9));
+contrast(1.1)
 
+drop-shadow(0 22px 40px rgba(0,0,0,0.18))
+drop-shadow(0 8px 18px rgba(0,0,0,0.12))
+
+drop-shadow(-2px -2px 3px rgba(255,255,255,0.95))
+drop-shadow(3px 3px 8px rgba(0,0,0,0.12));
 }
 
 /* Fade-in */
