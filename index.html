@@ -41,11 +41,15 @@ padding:40px;
 .logo{
 width:min(1000px,80vw);
 height:auto;
+
 opacity:0;
 
-animation:logoFade 2.2s ease forwards;
+/* Fade Animation */
+animation:
+logoFade 3s cubic-bezier(.22,.61,.36,1) forwards,
+logoBreath 12s ease-in-out infinite;
 
-/* reduzierter Emboss Look */
+/* subtle emboss */
 
 filter:
 grayscale(1)
@@ -57,18 +61,46 @@ drop-shadow(-2px -2px 3px rgba(255,255,255,0.9));
 
 }
 
-/* Fade Animation */
+/* Fade-in */
 
 @keyframes logoFade{
+
 0%{
 opacity:0;
-transform:scale(0.97);
+transform:scale(0.90);
+filter:blur(8px);
+}
+
+60%{
+opacity:0.7;
+transform:scale(1.03);
+filter:blur(1px);
 }
 
 100%{
 opacity:0.95;
 transform:scale(1);
+filter:blur(0);
 }
+
+}
+
+/* breathing animation */
+
+@keyframes logoBreath{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.015);
+}
+
+100%{
+transform:scale(1);
+}
+
 }
 
 /* MENU */
@@ -93,7 +125,7 @@ transition:opacity 0.25s ease;
 opacity:0.35;
 }
 
-/* TAGLINE */
+/* tagline */
 
 .subtle{
 margin-top:18px;
@@ -103,7 +135,7 @@ opacity:0.35;
 text-transform:lowercase;
 }
 
-/* MOBILE */
+/* mobile */
 
 @media (max-width:700px){
 
