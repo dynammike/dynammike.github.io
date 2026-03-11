@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>occasions — dynammike</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    html, body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+    }
+
+    body{
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(255,255,255,0.72) 0%,
+          rgba(255,255,255,0.32) 22%,
+          rgba(245,245,241,0.0) 58%
+        ),
+        #f5f5f1;
+      font-family:Arial, Helvetica, sans-serif;
+      color:#111;
+      min-height:100vh;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+      opacity:0.045;
+      pointer-events:none;
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:860px;
+      margin:0 auto;
+      padding:60px 24px 90px;
+    }
+
+    .top{
+      text-align:center;
+      margin-bottom:60px;
+      opacity:0;
+      animation:fadeUp 1.8s ease forwards;
+    }
+
+    .top a{
+      text-decoration:none;
+      color:#111;
+      opacity:0.72;
+      letter-spacing:0.28em;
+      text-transform:lowercase;
+      font-size:11px;
+    }
+
+    .top a:hover{
+      opacity:0.35;
+    }
+
+    h1{
+      margin:0 0 18px 0;
+      font-size:12px;
+      font-weight:normal;
+      letter-spacing:0.35em;
+      text-transform:lowercase;
+      color:#6f6f69;
+      text-align:center;
+    }
+
+    .line{
+      width:210px;
+      max-width:64%;
+      height:1px;
+      background:rgba(0,0,0,0.18);
+      margin:0 auto 46px;
+    }
+
+    .text{
+      max-width:620px;
+      margin:0 auto;
+      text-align:center;
+      color:#55554f;
+      font-size:15px;
+      line-height:2.05;
+      opacity:0;
+      animation:fadeUp 2.3s ease forwards;
+    }
+
+    .text p{
+      margin:0 0 26px 0;
+    }
+
+    @keyframes fadeUp{
+      0%{
+        opacity:0;
+        transform:translateY(12px);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (max-width:700px){
+      .wrap{
+        padding:42px 20px 70px;
+      }
+
+      .text{
+        font-size:14px;
+        line-height:1.95;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a href="index.html">back</a>
+    </div>
+
+    <h1>occasions</h1>
+    <div class="line"></div>
+
+    <div class="text">
+      <p>
+        occasionally also for selected occasions.
+      </p>
+
+      <p>
+        private celebrations, smaller gatherings, boutique settings
+        or company evenings — depending on atmosphere, context
+        and the right fit.
+      </p>
+
+      <p>
+        not always. but sometimes.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
