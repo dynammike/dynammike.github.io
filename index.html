@@ -1,122 +1,146 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dynammike</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dynammike</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-    }
-
-    body {
-      background: #f5f5f3;
-      color: #111;
-      font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    .wrap {
-      width: 100%;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-.logo {
-  width: min(1000px, 82vw);
-  height: auto;
-
-  opacity: 0.92;
-
-  filter:
-    grayscale(1)
-    brightness(1.05)
-    contrast(1.15)
-
-    drop-shadow(0 26px 48px rgba(0,0,0,0.22))
-    drop-shadow(0 12px 22px rgba(0,0,0,0.16))
-
-    drop-shadow(-3px -3px 6px rgba(255,255,255,0.95))
-    drop-shadow(3px 3px 10px rgba(0,0,0,0.14));
+*{
+box-sizing:border-box;
 }
 
-    .menu {
-      margin-top: 34px;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.35em;
-      text-transform: lowercase;
-    }
+html,body{
+margin:0;
+padding:0;
+min-height:100%;
+}
 
-    .menu a {
-      color: #111;
-      text-decoration: none;
-      margin: 0 16px;
-      opacity: 0.8;
-      transition: opacity 0.25s ease;
-    }
+body{
+background:#efefec;
+font-family:Arial, Helvetica, sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+color:#111;
+}
 
-    .menu a:hover {
-      opacity: 0.35;
-    }
+.wrap{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:40px;
+}
 
-    .subtle {
-      margin-top: 18px;
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: lowercase;
-      opacity: 0.35;
-      text-align: center;
-    }
+/* LOGO */
 
-    @media (max-width: 700px) {
-      .logo {
-        width: 90vw;
-      }
+.logo{
+width:min(1000px,80vw);
+height:auto;
+opacity:0;
 
-      .menu {
-        margin-top: 24px;
-        font-size: 11px;
-        letter-spacing: 0.22em;
-      }
+animation:logoFade 2.2s ease forwards;
 
-      .menu a {
-        margin: 0 10px;
-      }
+/* reduzierter Emboss Look */
 
-      .subtle {
-        font-size: 9px;
-        letter-spacing: 0.18em;
-      }
-    }
-  </style>
+filter:
+grayscale(1)
+brightness(1.05)
+contrast(1.08)
+drop-shadow(0 16px 30px rgba(0,0,0,0.12))
+drop-shadow(0 4px 10px rgba(0,0,0,0.08))
+drop-shadow(-2px -2px 3px rgba(255,255,255,0.9));
+
+}
+
+/* Fade Animation */
+
+@keyframes logoFade{
+0%{
+opacity:0;
+transform:scale(0.97);
+}
+
+100%{
+opacity:0.95;
+transform:scale(1);
+}
+}
+
+/* MENU */
+
+.menu{
+margin-top:34px;
+font-size:12px;
+letter-spacing:0.35em;
+text-transform:lowercase;
+text-align:center;
+}
+
+.menu a{
+text-decoration:none;
+color:#111;
+margin:0 18px;
+opacity:0.75;
+transition:opacity 0.25s ease;
+}
+
+.menu a:hover{
+opacity:0.35;
+}
+
+/* TAGLINE */
+
+.subtle{
+margin-top:18px;
+font-size:10px;
+letter-spacing:0.28em;
+opacity:0.35;
+text-transform:lowercase;
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+.logo{
+width:90vw;
+}
+
+.menu{
+letter-spacing:0.22em;
+}
+
+.menu a{
+margin:0 10px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="wrap">
-    <img src="logo_web.png" alt="dynammike" class="logo">
+<div class="wrap">
 
-    <nav class="menu">
-      <a href="listen.html">listen</a>
-      <a href="occasions.html">occasions</a>
-      <a href="contact.html">contact</a>
-    </nav>
+<img src="dynammike_logo.png" alt="Dynammike" class="logo">
 
-    <div class="subtle">music for certain occasions</div>
-  </div>
+<nav class="menu">
+<a href="listen.html">listen</a>
+<a href="occasions.html">occasions</a>
+<a href="contact.html">contact</a>
+</nav>
+
+<div class="subtle">
+music for certain occasions
+</div>
+
+</div>
 
 </body>
 </html>
