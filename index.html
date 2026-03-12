@@ -1,278 +1,332 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dynammike</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dynammike</title>
 
-  <style>
-    *{
-      box-sizing:border-box;
-    }
+<style>
 
-    html, body{
-      margin:0;
-      padding:0;
-      min-height:100%;
-    }
-
-    body{
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(255,255,255,0.72) 0%,
-          rgba(255,255,255,0.32) 22%,
-          rgba(245,245,241,0.0) 58%
-        ),
-        #f5f5f1;
-
-      font-family:Arial, Helvetica, sans-serif;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      color:#111;
-      overflow:hidden;
-      position:relative;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-      opacity:0.045;
-      pointer-events:none;
-    }
-
-    .wrap{
-      width:100%;
-      padding:40px 20px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      z-index:1;
-    }
-
-    /* LOGO STACK */
-
-    .logo-scene{
-      position:relative;
-      width:min(1000px, 82vw);
-      animation:
-        logoFade 3.2s cubic-bezier(.22,.61,.36,1) forwards,
-        logoBreath 11s ease-in-out infinite;
-      opacity:0;
-    }
-
-    .logo-layer{
-      display:block;
-      width:100%;
-      height:auto;
-      position:absolute;
-      top:0;
-      left:0;
-      user-select:none;
-      -webkit-user-drag:none;
-      pointer-events:none;
-    }
-
-    /* helle obere linke Kante */
-    .logo-highlight{
-      transform:translate(-3px,-3px);
-      opacity:0.95;
-      filter:
-        grayscale(1)
-        brightness(1.35)
-        contrast(1.1)
-        blur(1.2px);
-      mix-blend-mode:screen;
-    }
-
-    /* dunkle Kontur direkt an der Schrift */
-    .logo-edge-shadow{
-      transform:translate(3px,3px);
-      opacity:0.34;
-      filter:
-        brightness(0)
-        saturate(0)
-        blur(0.18px);
-      mix-blend-mode:multiply;
-    }
-
-    /* tieferer Schatten für mehr Prägung */
-    .logo-deep-shadow{
-      transform:translate(12px,12px);
-      opacity:0.40;
-      filter:
-        brightness(0)
-        saturate(0)
-        blur(18px);
-      mix-blend-mode:multiply;
-    }
-
-    /* Original */
-    .logo-main{
-      position:relative;
-      display:block;
-      width:100%;
-      height:auto;
-      opacity:0.98;
-      filter:
-        grayscale(1)
-        brightness(0.98)
-        contrast(1.28);
-    }
-
-    /* TAGLINE */
-
-  .subtle{
-  margin-top:36px;
-  font-size:10px;
-  letter-spacing:0.28em;
-  text-transform:lowercase;
-  text-align:center;
-  position:relative;
-  display:inline-block;
-  padding-bottom:26px;
-  color:#6f6f69;
+*{
+box-sizing:border-box;
 }
 
-    .subtle::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:0;
-      width:100%;
-      height:1px;
-      background:rgba(0,0,0,0.18);
-    }
+html, body{
+margin:0;
+padding:0;
+min-height:100%;
+}
 
-    /* MENU */
+body{
+background:
+radial-gradient(
+ellipse at center,
+rgba(255,255,255,0.72) 0%,
+rgba(255,255,255,0.32) 22%,
+rgba(245,245,241,0.0) 58%
+),
+#f5f5f1;
 
-    .menu{
-      margin-top:22px;
-      text-align:center;
-      font-size:12px;
-      letter-spacing:0.35em;
-      text-transform:lowercase;
-      opacity:0;
-      animation:menuFade 3.8s ease forwards;
-    }
+font-family:Arial, Helvetica, sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+color:#111;
+overflow:hidden;
+position:relative;
+}
 
-    .menu a{
-      text-decoration:none;
-      color:#222;
-      margin:0 18px;
-      opacity:0.72;
-      transition:all 0.25s ease;
-      position:relative;
-    }
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.045;
+pointer-events:none;
+}
 
-    .menu a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-4px;
-      width:0%;
-      height:1px;
-      background:#222;
-      transition:width 0.25s ease;
-    }
+.wrap{
+width:100%;
+padding:40px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+position:relative;
+z-index:1;
+}
 
-    .menu a:hover{
-      opacity:0.35;
-    }
+/* LOGO */
 
-    .menu a:hover::after{
-      width:100%;
-    }
+.logo-scene{
+position:relative;
+width:min(1000px,82vw);
 
-    @keyframes logoFade{
-      0%{
-        opacity:0;
-        transform:scale(0.88);
-        filter:blur(10px);
-      }
-      60%{
-        opacity:0.78;
-        transform:scale(1.03);
-        filter:blur(1px);
-      }
-      100%{
-        opacity:1;
-        transform:scale(1);
-        filter:blur(0);
-      }
-    }
+animation:
+logoFade 3.2s cubic-bezier(.22,.61,.36,1) forwards,
+logoBreath 18s ease-in-out infinite;
 
-    @keyframes logoBreath{
-      0%{
-        transform:scale(1);
-      }
-      50%{
-        transform:scale(1.015);
-      }
-      100%{
-        transform:scale(1);
-      }
-    }
+opacity:0;
 
-    @keyframes menuFade{
-      0%{
-        opacity:0;
-        transform:translateY(10px);
-      }
-      100%{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+transition:transform 0.4s ease;
+}
 
-    @media (max-width:700px){
-      .logo-scene{
-        width:92vw;
-      }
+.logo-layer{
+display:block;
+width:100%;
+height:auto;
+position:absolute;
+top:0;
+left:0;
+user-select:none;
+-webkit-user-drag:none;
+pointer-events:none;
+}
 
-      .menu{
-        font-size:11px;
-        letter-spacing:0.22em;
-      }
+/* highlight */
 
-      .menu a{
-        margin:0 10px;
-      }
+.logo-highlight{
+transform:translate(-3px,-3px);
+opacity:0.95;
+filter:
+grayscale(1)
+brightness(1.35)
+contrast(1.1)
+blur(1.2px);
+mix-blend-mode:screen;
+}
 
-      .subtle{
-        font-size:9px;
-        letter-spacing:0.18em;
-      }
-    }
-  </style>
+/* edge */
+
+.logo-edge-shadow{
+transform:translate(3px,3px);
+opacity:0.34;
+filter:
+brightness(0)
+saturate(0)
+blur(0.18px);
+mix-blend-mode:multiply;
+}
+
+/* deep shadow */
+
+.logo-deep-shadow{
+transform:translate(12px,12px);
+opacity:0.40;
+filter:
+brightness(0)
+saturate(0)
+blur(18px);
+mix-blend-mode:multiply;
+}
+
+/* original */
+
+.logo-main{
+position:relative;
+display:block;
+width:100%;
+height:auto;
+opacity:0.98;
+filter:
+grayscale(1)
+brightness(0.98)
+contrast(1.28);
+}
+
+/* tagline */
+
+.subtle{
+margin-top:36px;
+font-size:10px;
+letter-spacing:0.28em;
+text-transform:lowercase;
+text-align:center;
+position:relative;
+display:inline-block;
+padding-bottom:26px;
+color:#6f6f69;
+}
+
+.subtle::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+height:1px;
+
+background:linear-gradient(
+to right,
+rgba(0,0,0,0.04) 0%,
+rgba(0,0,0,0.22) 50%,
+rgba(0,0,0,0.04) 100%
+);
+}
+
+/* MENU */
+
+.menu{
+margin-top:18px;
+text-align:center;
+font-size:12px;
+letter-spacing:0.35em;
+text-transform:lowercase;
+
+opacity:0;
+animation:menuFade 3.8s ease forwards;
+}
+
+.menu a{
+text-decoration:none;
+color:#222;
+margin:0 24px;
+opacity:0.72;
+transition:all 0.35s ease;
+position:relative;
+}
+
+.menu a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0%;
+height:1px;
+background:#222;
+transition:width 0.35s ease;
+}
+
+.menu a:hover{
+opacity:0.45;
+}
+
+.menu a:hover::after{
+width:100%;
+}
+
+/* animations */
+
+@keyframes logoFade{
+
+0%{
+opacity:0;
+transform:scale(0.88);
+filter:blur(10px);
+}
+
+60%{
+opacity:0.78;
+transform:scale(1.03);
+filter:blur(1px);
+}
+
+100%{
+opacity:1;
+transform:scale(1);
+filter:blur(0);
+}
+
+}
+
+@keyframes logoBreath{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.015);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes menuFade{
+
+0%{
+opacity:0;
+transform:translateY(10px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* mobile */
+
+@media (max-width:700px){
+
+.logo-scene{
+width:92vw;
+}
+
+.menu{
+font-size:11px;
+letter-spacing:0.22em;
+}
+
+.menu a{
+margin:0 12px;
+}
+
+.subtle{
+font-size:9px;
+letter-spacing:0.18em;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="logo-scene">
-      <img src="logo_web.png" alt="" class="logo-layer logo-deep-shadow" aria-hidden="true">
-      <img src="logo_web.png" alt="" class="logo-layer logo-edge-shadow" aria-hidden="true">
-      <img src="logo_web.png" alt="" class="logo-layer logo-highlight" aria-hidden="true">
-      <img src="logo_web.png" alt="Dynammike" class="logo-main">
-    </div>
+<div class="logo-scene" id="logo">
 
-    <div class="subtle">music for certain occasions</div>
+<img src="logo_web.png" class="logo-layer logo-deep-shadow" aria-hidden="true">
+<img src="logo_web.png" class="logo-layer logo-edge-shadow" aria-hidden="true">
+<img src="logo_web.png" class="logo-layer logo-highlight" aria-hidden="true">
+<img src="logo_web.png" class="logo-main">
 
-    <nav class="menu">
-      <a href="listen.html">listen</a>
-      <a href="occasions.html">occasions</a>
-      <a href="contact.html">contact</a>
-    </nav>
+</div>
 
-  </div>
+<div class="subtle">music for certain occasions</div>
+
+<nav class="menu">
+<a href="listen.html">listen</a>
+<a href="events.html">events</a>
+<a href="contact.html">contact</a>
+</nav>
+
+</div>
+
+<script>
+
+/* subtle logo parallax */
+
+const logo = document.getElementById("logo");
+
+document.addEventListener("mousemove", (e)=>{
+
+const x = (e.clientX / window.innerWidth - 0.5) * 6;
+const y = (e.clientY / window.innerHeight - 0.5) * 6;
+
+logo.style.transform = `translate(${x}px, ${y}px)`;
+
+});
+
+</script>
 
 </body>
 </html>
